@@ -34,7 +34,7 @@
     // builds the weather tile
     var buildWeatherTile = function(id, oModel) {
         var tile = new sap.m.StandardTile(id, {
-            numberUnit : "Celsius",
+            numberUnit : "Fahrenheit",
             infoState : "Success",
             press : function() {
                 var link = "http://openweathermap.org/city/" + oModel.oData.id;
@@ -52,7 +52,7 @@
         tile.setModel(oModel);
         // Bind name of city to the tile title
         tile.bindProperty("title", "/name", function(bValue) {
-            var longTitle = "Current weather in " + bValue;
+            var longTitle = bValue + " Current Weather";
             return longTitle;
         });
         // Bind weather details to info field of tile
@@ -60,12 +60,12 @@
         // Bind temperature to the number field of the tile
         tile.bindProperty("number", "/main/temp", function(bValue) {
             // We want Celsius
-            var degreesCelsius = Math.round(bValue - 273.15);
+            //var degreesCelsius = Math.round(bValue - 273.15);
             // Also add the Celsius sign to the temperature value
             //Switch to Fahrenheit
-            //var degreesFahrenheit = Math.round(((bValue - 273.15) * 9/5) + 32);
-            //return degreesFahrenheit + "\u00b0";
-            return degreesCelsius + "\u00b0";
+            var degreesFahrenheit = Math.round(((bValue - 273.15) * 9/5) + 32);
+            return degreesFahrenheit + "\u00b0";
+            //return degreesCelsius + "\u00b0";
         });
         return tile;
     };
@@ -77,11 +77,11 @@
     var app = new sap.m.App("myApp", {
         initialPage : idPageMain
     }); // page1 should be displayed first
-    // Create a tile for the current weather in Lisbon
+    // Create a tile for the current weather in Lisbon (changed to Minneapolis)
     var oModelWeatherCity1 = getModelFromURL("/openweathermap?q=:Minneapolis");
     var weatherTileCity1 = buildWeatherTile("myWeatherTileCity1", oModelWeatherCity1);
  
-    // Create another tile for the current weather in another city
+    // Create another tile for the current weather in another city (like Mumbai)
     var oModelWeatherOther = getModelFromURL("/openweathermap?q=Mumbai");
     var weatherTileOther = buildWeatherTile("myWeatherTileOther", oModelWeatherOther);
     // Now create the page and place it into the HTML document
