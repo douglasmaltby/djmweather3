@@ -88,6 +88,10 @@
  // Create another tile for the current weather in another city like Mumbai
     var oModelWeatherCity3 = getModelFromURL("/openweathermap?q=Mumbai");
     var weatherTileCity3 = buildWeatherTile("myWeatherTileCity3", oModelWeatherCity3);
+
+    // Create another tile for the current weather in another city: Hanoi
+    var oModelWeatherCity4 = getModelFromURL("/openweathermap?q=Hanoi");
+    var weatherTileCity4 = buildWeatherTile("myWeatherTileCity3", oModelWeatherCity4);
     
     // Now create the page and place it into the HTML document
     var mainPage = buildMainPage(idPageMain, "Doug's Lightweight HTML5 Weather app using Git on SAP HANA Cloud Platform", [weatherTileCity1,weatherTileCity2,weatherTileCity3 ]);
