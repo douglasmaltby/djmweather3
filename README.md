@@ -4,4 +4,4 @@ SCP djmweather app moved to GitHub
 * now must edit in SCP full-stack WebIDE
 * created openweathermap.org API key
 * had to change github password
-
+* another change to 
